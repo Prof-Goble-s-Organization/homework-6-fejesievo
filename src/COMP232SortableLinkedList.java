@@ -16,6 +16,35 @@ public class COMP232SortableLinkedList<E extends Comparable<E>> extends COMP232D
 	 */
 	public void insertionSortList() {
 		// Intentionally not implemented - see homework assignment.
-		throw new UnsupportedOperationException("Not yet implemented");
+		for (int i = 1; i < size; i++) {
+			E current = get(i);
+			int j = i;
+	
+			while (j > 0 && get(j - 1).compareTo(current) > 0) {
+				set(j, get(j - 1));
+				j--;
+			}
+	
+			set(j, current);
+		}
 	}
+	
+
+
+
+
+	public static void main(String[] args) {
+		COMP232SortableLinkedList<Integer> list = new COMP232SortableLinkedList<Integer>();
+		list.add(2);
+		list.add(3);
+		list.add(1);
+		list.add(2);
+		list.add(2);
+		list.add(3);
+		list.add(1);
+		
+		list.insertionSortList();
+		System.out.println(list.toString());
+}
+
 }
